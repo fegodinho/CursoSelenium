@@ -32,7 +32,7 @@ public class TesteCadastro {
 		dsl.clicarCheckBox("elementosForm:comidaFavorita:2");
 		dsl.selecionarCombo("elementosForm:escolaridade","Superior");
 		dsl.selecionarCombo("elementosForm:esportes","Natacao");
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		
 		Assert.assertTrue(dsl.obterTexto("resultado").startsWith("Cadastrado!"));
 		Assert.assertTrue(dsl.obterTexto("descNome").endsWith("Felipe"));
@@ -46,14 +46,14 @@ public class TesteCadastro {
 	
 	@Test
 	public void verificaNomeObrigatorio() {				
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		Assert.assertEquals("Nome eh obrigatorio", dsl.alertaObterTextoEAceita());		
 	}
 	
 	@Test
 	public void verificaSobrenomeObrigatorio() {				
 		dsl.escreve("elementosForm:nome","Nome");
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		Assert.assertEquals("Sobrenome eh obrigatorio", dsl.alertaObterTextoEAceita());		
 	}
 	
@@ -61,7 +61,7 @@ public class TesteCadastro {
 	public void verificaSexoObrigatorio() {				
 		dsl.escreve("elementosForm:nome","Nome");
 		dsl.escreve("elementosForm:sobrenome","Sobrenome");
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		Assert.assertEquals("Sexo eh obrigatorio", dsl.alertaObterTextoEAceita());		
 	}
 	
@@ -72,7 +72,7 @@ public class TesteCadastro {
 		dsl.clicarRadioButton("elementosForm:sexo:0");
 		dsl.clicarCheckBox("elementosForm:comidaFavorita:0");
 		dsl.clicarCheckBox("elementosForm:comidaFavorita:3");
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		Assert.assertEquals("Tem certeza que voce eh vegetariano?", dsl.alertaObterTextoEAceita());	
 	}
 	
@@ -84,7 +84,7 @@ public class TesteCadastro {
 		dsl.clicarCheckBox("elementosForm:comidaFavorita:0");
 		dsl.selecionarCombo("elementosForm:esportes", "Natacao");
 		dsl.selecionarCombo("elementosForm:esportes", "O que eh esporte?");
-		dsl.clicarBotão("elementosForm:cadastrar");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		Assert.assertEquals("Voce faz esporte ou nao?", dsl.alertaObterTextoEAceita());	
 	}
 

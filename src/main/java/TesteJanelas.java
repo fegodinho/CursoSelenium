@@ -9,12 +9,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class TesteJanelas {
 	
 	private WebDriver driver;
+	private DSL dsl;
 	
 	@Before
 	public void inicializa() {
 		driver = new FirefoxDriver();
 		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");		
+		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL(driver);
 	}
 	
 	@After
@@ -24,23 +26,24 @@ public class TesteJanelas {
 	
 	@Test
 	public void deveInteragirComJanelas() {
-		driver.findElement(By.id("buttonPopUpEasy")).click();
-		driver.switchTo().window("Popup");		
+		dsl.clicarBotao("buttonPopUpEasy");
+		dsl.trocarJanela("Popup");
+		dsl.escreve(By.tagName("textarea"),"Deu certo?");
 		driver.findElement(By.tagName("textarea")).sendKeys("Deu certo?");
 		driver.close();
-		driver.switchTo().window("");
-		driver.findElement(By.tagName("textarea")).sendKeys("E agora?");	
+		dsl.trocarJanela("");
+		dsl.escreve(By.tagName("textarea"), "e agora?");
 	}
 	
 	@Test
-	public void deveInteragirComJanelasSemTitulo() {
-		driver.findElement(By.id("buttonPopUpHard")).click();
+	public void deveInteragirComJanelasSemTitulo(){
+		dsl.clicarBotao("buttonPopUpHard");
 		System.out.println(driver.getWindowHandle());
 		System.out.println(driver.getWindowHandles());
-		driver.switchTo().window((String) driver.getWindowHandles().toArray()[1]);
-		driver.findElement(By.tagName("textarea")).sendKeys("Deu certo?");
-		driver.switchTo().window((String) driver.getWindowHandles().toArray()[0]);
-		driver.findElement(By.tagName("textarea")).sendKeys("E agora?");		
+		dsl.trocarJanela((String) driver.getWindowHandles().toArray()[1]);
+		dsl.escreve(By.tagName("textarea"), "Deu certo?");
+		dsl.trocarJanela((String) driver.getWindowHandles().toArray()[0]);
+		dsl.escreve(By.tagName("textarea"), "e agora?");
 	}
 
 }
