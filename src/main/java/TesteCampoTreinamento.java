@@ -63,7 +63,7 @@ public class TesteCampoTreinamento {
 	@Test
 	public void deveInteregirComCombo() {
 		dsl.selecionarCombo("elementosForm:escolaridade", "2o grau completo");
-		Assert.assertEquals("2o grau completo", dsl.obterValorCampo("elementosForm:escolaridade"));
+		Assert.assertEquals("2graucomp", dsl.obterValorCampo("elementosForm:escolaridade"));
 	}
 	
 	@Test
