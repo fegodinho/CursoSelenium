@@ -7,7 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TesteCampoTreinamento {
@@ -25,7 +27,7 @@ public class TesteCampoTreinamento {
 	
 	@After
 	public void finalizacao() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 	@Test
@@ -102,6 +104,17 @@ public class TesteCampoTreinamento {
 		//Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains("Campo de Treinamento"));
 		Assert.assertEquals("Campo de Treinamento", dsl.obterTexto(By.tagName("h3")));
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", dsl.obterTexto(By.className("facilAchar")));
+	}
+	
+	@Test
+	public void testeJavascript() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//js.executeScript("alert('Testando js via Selenium')");
+		js.executeScript("document.getElementById('elementosForm:nome').value = 'Escriva via js'");
+		js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
+		
+		WebElement element = driver.findElement(By.id("elementosForm:nome"));
+		js.executeScript("arguments[0].style.border = arguments[1]", element,"solid 4px red");
 	}
 			
 }
