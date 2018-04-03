@@ -27,7 +27,7 @@ public class TesteCampoTreinamento {
 	
 	@After
 	public void finalizacao() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	@Test
