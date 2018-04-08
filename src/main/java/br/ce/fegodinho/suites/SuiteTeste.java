@@ -6,7 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import br.ce.fegodinho.core.DriverFactory;
 import br.ce.fegodinho.test.TesteCadastro;
-import br.ce.fegodinho.test.TesteCampoTreinamento;
 import br.ce.fegodinho.test.TesteRegrasCadastro;
 
 @RunWith(Suite.class)
@@ -19,6 +18,5 @@ public class SuiteTeste {
 	@AfterClass
 	public static void finalizaTudo() {
 		DriverFactory.killDriver();
-	}
-	
+	}	
 }

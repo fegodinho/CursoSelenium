@@ -2,6 +2,6 @@ package br.ce.fegodinho.core;
 
 public class Propriedades {
 	
-	public static boolean FECHAR_BROWSER = true;
+	public static boolean FECHAR_BROWSER = false;
 
 }
