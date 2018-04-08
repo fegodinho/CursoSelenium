@@ -1,3 +1,4 @@
+package br.ce.fegodinho.test;
 import static br.ce.fegodinho.core.DriverFactory.getDriver;
 import static br.ce.fegodinho.core.DriverFactory.killDriver;
 

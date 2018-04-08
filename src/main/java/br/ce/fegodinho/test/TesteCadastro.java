@@ -1,12 +1,14 @@
+package br.ce.fegodinho.test;
 import static br.ce.fegodinho.core.DriverFactory.getDriver;
-import static br.ce.fegodinho.core.DriverFactory.killDriver;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TesteCadastro {
+import br.ce.fegodinho.core.BaseTest;
+import br.ce.fegodinho.page.CampoTreinamentoPage;
+
+public class TesteCadastro extends BaseTest {
 	
 	private CampoTreinamentoPage page;
 	
@@ -14,11 +16,6 @@ public class TesteCadastro {
 	public void inicializa() {
 		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");	
 		page = new CampoTreinamentoPage();
-	}
-	
-	@After
-	public void finalizacao() {
-		killDriver();
 	}
 	
 	@Test
