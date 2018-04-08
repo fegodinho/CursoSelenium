@@ -2,7 +2,10 @@ package br.ce.fegodinho.core;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class DriverFactory {
 	
@@ -14,7 +17,12 @@ public class DriverFactory {
 	
 	public static WebDriver getDriver() {	
 		if (driver == null) {
-			driver = new FirefoxDriver();
+			switch (Propriedades.browser) {
+			case FIREFOX: driver = new FirefoxDriver(); break;
+			case CHROME: driver = new ChromeDriver(); break;
+			case INTERNET_EXPLORER: driver = new InternetExplorerDriver(); break;
+			case MICROSOFT_EDGE: driver = new EdgeDriver(); break;			
+			}
 			driver.manage().window().setSize(new Dimension(1200, 765));
 		}		
 		return driver;		
